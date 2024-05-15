@@ -9,10 +9,10 @@ import EmptyProduct from "@components/ui/empty";
 const Categories = ({ categories, className, ...props }) => {
   console.log(categories);
   const settings = {
-    loop: true,
+    loop: false,
     slidesPerView: 2,
     spaceBetween: 5,
-    autoplay: true,
+    autoplay: false,
     pagination: false,
     navigation: false,
     breakpoints: {
@@ -35,25 +35,24 @@ const Categories = ({ categories, className, ...props }) => {
   return (
     <CategoriesWrap py={[60, 60, 100]} className={cn(className)} {...props}>
       <Container>
-        {categories.length > 0 ? (
+        {categories.length > 1 ? (
           <Slider settings={settings}>
-            {categories?.map(
-              ({ node: category }) => (
-                console.log(category),
-                (
-                  <Slide key={category?.id}>
-                    <Category
-                      category={category?.title}
-                      icon={category?.image?.originalSrc}
-                      slug={`/collection/${category?.handle}`}
-                    />
-                  </Slide>
-                )
-              )
-            )}
+            {categories?.map(({ node: category }) => {
+              console.log(category);
+              return (
+                <Slide key={category?.id}>
+                  <Category
+                    category={category?.title}
+                    icon={category?.image?.originalSrc}
+                    slug={`/collection/${category?.handle}`}
+                  />
+                </Slide>
+              );
+            })}
           </Slider>
         ) : (
-          <EmptyProduct className="mt-0" message="Collections not found!" />
+          ""
+          //   <EmptyProduct className="mt-0" message="Collections not found!" />
         )}
       </Container>
     </CategoriesWrap>
