@@ -39,6 +39,7 @@ const CartItem = ({product}) => {
                         <Image
                             width={150}
                             height={150}
+                            objectFit="cover"
                             src={images?.edges[0]?.node?.originalSrc}
                         />
                     </a>

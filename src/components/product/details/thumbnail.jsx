@@ -29,12 +29,15 @@ const ProductDetailsThumb = ({thumbnails}) => {
         <Fragment>
             <ProductThumbGallery>
                 <Slider settings={thumbGalleryConfig}>
-                    {thumbnails?.map(image => (
+                    {thumbnails?.map((image, index) => (
                         <Slide key={image?.node?.id}>
                             <figure>
                                 <Image
+                                    loading={index === 0 ? "eager" : "lazy"}
                                     layout="fill"
                                     alt="furns"
+                                    sizes="(max-width: 767px) 100vw, 470px"
+                                    objectFit="cover"
                                     src={image?.node?.originalSrc}
                                 />
                             </figure>

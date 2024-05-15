@@ -19,6 +19,7 @@ const ProductThumbnail = ({product}) => {
                                     alt={title}
                                     width={270}
                                     height={318}
+                                    objectFit="cover"
                                     src={thumb.originalSrc}
                                 />
                             </div>
@@ -28,6 +29,7 @@ const ProductThumbnail = ({product}) => {
                             alt={title}
                             width={270}
                             height={318}
+                            objectFit="cover"
                             src={placeholder}
                         />
                     )}
