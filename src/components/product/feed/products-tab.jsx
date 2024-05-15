@@ -5,7 +5,7 @@ import Loader from "@components/ui/loader";
 import EmptyProduct from "@components/ui/empty";
 import ProductCard from "@components/product/card";
 import SectionTitle from "@components/ui/section-title";
-// import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { Col, Container, Row } from "@bootstrap-styled/v4";
 // import { ProductNav } from "@components/product/feed/style";
 import {

@@ -54,7 +54,33 @@ const ProductDetailsPage = ({products, product}) => {
     );
 };
 
-export const getServerSideProps = async ({params}) => {
+// export const getServerSideProps = async ({params}) => {
+//     const {slug} = params;
+//     const product = await client(productQuery(slug));
+//     const products = await client(productsQuery());
+
+//     await new Promise(resolve => setTimeout(resolve, 10000));
+
+//     if (!product) {
+//         throw new Error(`Product with slug '${slug}' not found`);
+//     }
+
+//     if (!products) {
+//         throw new Error(`Products fetching error!`);
+//     }
+
+//     return {
+//         props: {
+//             product: product?.productByHandle,
+//             products: products?.products?.edges,
+//         },
+//     };
+// };
+
+// This function gets called at build time on server-side.
+// It may be called again, on a serverless function, if
+// revalidation is enabled and a new request comes in
+export async function getStaticProps({params}) {
     const {slug} = params;
     const product = await client(productQuery(slug));
     const products = await client(productsQuery());
@@ -66,13 +92,36 @@ export const getServerSideProps = async ({params}) => {
     if (!products) {
         throw new Error(`Products fetching error!`);
     }
-
+   
     return {
-        props: {
-            product: product?.productByHandle,
-            products: products?.products?.edges,
-        },
-    };
-};
+      props: {
+        product: product?.productByHandle,
+        products: products?.products?.edges,
+      },
+      // Next.js will attempt to re-generate the page:
+      // - When a request comes in
+      // - At most once every 10 seconds
+      revalidate: 10, // In seconds
+    }
+  }
+   
+  // This function gets called at build time on server-side.
+  // It may be called again, on a serverless function, if
+  // the path has not been generated.
+  export async function getStaticPaths() {
+    const productsResult = await client(productsQuery());
+
+    const products = productsResult?.products?.edges || []
+   
+    // Get the paths we want to pre-render based on posts
+    const paths = products.map((product) => ({
+      params: { slug: product.node.handle},
+    }))
+   
+    // We'll pre-render only these paths at build time.
+    // { fallback: 'blocking' } will server-render pages
+    // on-demand if the path doesn't exist.
+    return { paths, fallback: 'blocking' }
+  }
 
 export default ProductDetailsPage;
