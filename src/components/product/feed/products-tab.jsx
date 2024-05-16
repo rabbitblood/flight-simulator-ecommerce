@@ -55,7 +55,7 @@ const ProductsTab = ({ products, limit = 8, className }) => {
   };
 
   return (
-    <div className={cn(className)}>
+    <section className={cn(className)}>
       <Container>
         <Row>
           <Col xs={12}>
@@ -106,7 +106,7 @@ const ProductsTab = ({ products, limit = 8, className }) => {
           </Tabs>
         )}
       </Container>
-    </div>
+    </section>
   );
 };
 
