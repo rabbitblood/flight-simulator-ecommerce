@@ -136,7 +136,7 @@ export const GlobalStyle = createGlobalStyle`
     box-shadow: none;
   }
 
-  .scroll-button:focus {
+  .scroll-button:focus:not(.disabled) {
     box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.1);
   }
 
