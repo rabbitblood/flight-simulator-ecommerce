@@ -1,5 +1,7 @@
-import styled, {space} from "@styled";
+import styled, { space } from '@styled'
 
 export const PromotionsWrap = styled.section`
-  ${space}
+    ${space}
+    margin-top: 30px;
+    background-color: transparent;
 `
