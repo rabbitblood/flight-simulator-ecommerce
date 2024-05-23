@@ -6,6 +6,8 @@ export const PromoTitle = styled.h3`
     margin-bottom: 16px;
     color: ${themeGet('colors.heading')};
     font-weight: ${themeGet('fontWeights.subHeading')};
+    text-overflow: ellipsis;
+    overflow: hidden;
 
     ${devices.xs} {
         font-size: 26px;
@@ -14,18 +16,22 @@ export const PromoTitle = styled.h3`
 `
 export const PromoContent = styled.div`
     align-self: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
 `
 
 export const PromoInfo = styled.div`
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     display: flex;
     flex-direction: row;
     width: 100%;
     height: 100%;
+    max-height: 100%;
     padding: 40px;
     justify-content: flex-start;
+    text-overflow: ellipsis;
 
     ${devices.xs} {
         padding: 20px;
@@ -46,15 +52,15 @@ export const PromoInfo = styled.div`
 `
 
 export const PromoItem = styled.a`
-    //background color black is odd, white is even
     background-color: ${themeGet('colors.white')};
-    display: block;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     overflow: hidden;
     position: relative;
     width: 100%;
 
     img {
-        width: 50%;
+        width: 100%;
         transition: ${themeGet('transition')};
     }
 `

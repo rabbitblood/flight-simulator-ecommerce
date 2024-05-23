@@ -15,7 +15,7 @@ const promodata = [
 ]
 
 const Promotions = ({ fluid, products }) => {
-    const top4 = products.slice(0, 4)
+    const top4 = products.slice(0, 3)
     console.log(top4)
     return (
         <PromotionsWrap py={[60, 60, 100]}>
@@ -24,13 +24,14 @@ const Promotions = ({ fluid, products }) => {
                     {top4.map((promo, key) => (
                         <Col lg={13} key={key}>
                             <Promo
-                                slug={''}
+                                slug={'product/' + promo.node.handle}
                                 align={'left'}
                                 thumb={
                                     promo.node.images.edges[0].node.originalSrc
                                 }
                                 title={promo.node.title}
-                                content={''}
+                                //content={promo.node.description}
+                                swap={key % 2 === 0}
                             />
                         </Col>
                     ))}
