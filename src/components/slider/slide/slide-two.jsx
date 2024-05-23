@@ -1,14 +1,20 @@
-import PropTypes from "prop-types";
-import Button from "@components/ui/button";
-import {Col, Container, Row} from "@bootstrap";
-import {SlideContent, SlideItem, SlideSubTitle, SlideTitle, SliderThumb} from "@components/slider/slider.style";
+import PropTypes from 'prop-types'
+import Button from '@components/ui/button'
+import { Col, Container, Row } from '@bootstrap'
+import {
+    SlideContent,
+    SlideItem,
+    SlideSubTitle,
+    SlideTitle,
+    SliderThumb,
+} from '@components/slider/slider.style'
 
-const SlideTwo = ({subTitle, title, content, thumb}) => {
+const SlideTwo = ({ subTitle, title, content, thumb }) => {
     return (
         <SlideItem>
             {thumb && (
                 <SliderThumb className="style-2">
-                    <img src={thumb} alt={title}/>
+                    <img src={thumb} alt={title} />
                 </SliderThumb>
             )}
 
@@ -16,7 +22,9 @@ const SlideTwo = ({subTitle, title, content, thumb}) => {
                 <Row className="justify-content-center">
                     <Col md={8} className="m-auto">
                         <SlideContent mode="light" textAlign="center">
-                            {subTitle && <SlideSubTitle>{subTitle}</SlideSubTitle>}
+                            {subTitle && (
+                                <SlideSubTitle>{subTitle}</SlideSubTitle>
+                            )}
                             {title && <SlideTitle>{title}</SlideTitle>}
                             {content && <p>{content}</p>}
                             <Button
@@ -24,8 +32,8 @@ const SlideTwo = ({subTitle, title, content, thumb}) => {
                                 href="/shop"
                                 color="white"
                                 bg="primary"
-                                hvrBg="black"
-                                hvrColor="primary"
+                                hvrBg="white"
+                                hvrColor="gray"
                                 className="mt-4 mt-md-5"
                             >
                                 Shop Now
@@ -35,15 +43,14 @@ const SlideTwo = ({subTitle, title, content, thumb}) => {
                 </Row>
             </Container>
         </SlideItem>
-    );
-};
+    )
+}
 
 SlideTwo.propTypes = {
     subTitle: PropTypes.string,
     title: PropTypes.string,
     content: PropTypes.string,
-    thumb: PropTypes.string
-};
+    thumb: PropTypes.string,
+}
 
-
-export {SlideTwo};
+export { SlideTwo }

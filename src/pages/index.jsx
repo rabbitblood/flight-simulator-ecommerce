@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Layout from '@components/layout'
 import settings from '@data/settings.json'
 // import LatestBlog from "@components/blog/posts";
-// import Promotions from "@components/promotions";
+import Promotions from '@components/promotions'
 import Categories from '@components/categories'
 import sliderData from '@data/slider/home-2.json'
 import { ProductsTab } from '@components/product/feed'
@@ -13,9 +13,9 @@ import Testimonials from '../components/testimonials/Testimonials'
 
 const HomeTwo = ({ blogs, products, collections }) => {
     return (
-        <Layout bg="gray250">
+        <Layout>
             <Head>
-                <title>{'Home 2 :: ' + settings?.title}</title>
+                <title>{'Home' + settings?.title}</title>
                 <meta name="description" content={settings?.description} />
             </Head>
 
@@ -25,9 +25,10 @@ const HomeTwo = ({ blogs, products, collections }) => {
                 settings={{ effect: 'fade', speed: 1000 }}
             />
 
+            {/* 
             <Clients />
 
-            <Testimonials />
+            <Testimonials /> */}
 
             <Categories categories={collections} />
 
@@ -37,7 +38,7 @@ const HomeTwo = ({ blogs, products, collections }) => {
                 className="featured-products"
             />
 
-            {/* <Promotions fluid={true}/> */}
+            <Promotions fluid={true} products={products} />
 
             {/* <LatestBlog posts={blogs} pt={[60, 60, 100]}/> */}
         </Layout>
