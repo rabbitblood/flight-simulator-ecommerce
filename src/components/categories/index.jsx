@@ -32,6 +32,10 @@ const Categories = ({ categories, className, ...props }) => {
     },
   };
 
+  if (!categories || categories.length <= 1) {
+    return null;
+  }
+
   return (
     <CategoriesWrap py={[60, 60, 100]} className={cn(className)} {...props}>
       <Container>

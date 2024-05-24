@@ -1,11 +1,11 @@
-import Link from "next/link";
-import Image from "next/image";
-import PropTypes from 'prop-types';
-import {useDispatch} from "react-redux";
-import {CURRENCY} from "@utils/constant";
-import {getProductStock} from "@utils/product";
-import {Quantity} from "@components/cart/cart.style";
-import {CgMathPlus, CgMathMinus} from "react-icons/cg";
+import Link from 'next/link'
+import Image from 'next/image'
+import PropTypes from 'prop-types'
+import { useDispatch } from 'react-redux'
+import { CURRENCY } from '@utils/constant'
+import { getProductStock } from '@utils/product'
+import { Quantity } from '@components/cart/cart.style'
+import { CgMathPlus, CgMathMinus } from 'react-icons/cg'
 import {
     PriceAmount,
     RemoveButton,
@@ -14,18 +14,19 @@ import {
     MiniCartProPrice,
     MiniCartProThumb,
     MiniCartProContent,
-    MiniCartProductItem
-} from "@components/cart/minicart-sidebar/style";
+    MiniCartProductItem,
+} from '@components/cart/minicart-sidebar/style'
 import {
     removeCartAction,
     incrementCartQuantityAction,
-    decrementCartQuantityAction
-} from "@global/actions/cartAction";
+    decrementCartQuantityAction,
+} from '@global/actions/cartAction'
 
-const MiniCartProduct = ({product}) => {
-    const {title, handle, images, quantity, price, variations, variants} = product;
-    const stock = getProductStock(product, variations);
-    const dispatch = useDispatch();
+const MiniCartProduct = ({ product }) => {
+    const { title, handle, images, quantity, price, variations, variants } =
+        product
+    const stock = getProductStock(product, variations)
+    const dispatch = useDispatch()
 
     return (
         <MiniCartProductItem>
@@ -48,43 +49,58 @@ const MiniCartProduct = ({product}) => {
                     </Link>
 
                     {variants?.edges?.length > 1 && (
-                        <MiniCartProMeta>
-                            {variations?.title}
-                        </MiniCartProMeta>
+                        <MiniCartProMeta>{variations?.title}</MiniCartProMeta>
                     )}
 
                     <MiniCartProPrice>
-                        {quantity} x <PriceAmount>{CURRENCY + price}</PriceAmount>
+                        {quantity} x{' '}
+                        <PriceAmount>{CURRENCY + price}</PriceAmount>
                     </MiniCartProPrice>
 
                     <Quantity>
                         <button
-                            style={{pointerEvents: quantity === 1 ? "none" : "visible"}}
-                            onClick={() => dispatch(decrementCartQuantityAction(product))}
+                            style={{
+                                pointerEvents:
+                                    quantity === 1 ? 'none' : 'visible',
+                            }}
+                            onClick={() =>
+                                dispatch(decrementCartQuantityAction(product))
+                            }
                         >
-                            <CgMathMinus/>
+                            <CgMathMinus />
                         </button>
-                        <input type="text" value={quantity} size={stock} readOnly/>
+                        <input
+                            type="text"
+                            value={quantity}
+                            size={stock}
+                            readOnly
+                        />
                         <button
-                            style={{pointerEvents: quantity === stock ? "none" : "visible"}}
-                            onClick={() => dispatch(incrementCartQuantityAction(product))}
+                            style={{
+                                pointerEvents:
+                                    quantity === stock ? 'none' : 'visible',
+                            }}
+                            onClick={() =>
+                                dispatch(incrementCartQuantityAction(product))
+                            }
                         >
-                            <CgMathPlus/>
+                            <CgMathPlus />
                         </button>
                     </Quantity>
                 </div>
 
-                <RemoveButton onClick={() => dispatch(removeCartAction(product))}>
+                <RemoveButton
+                    onClick={() => dispatch(removeCartAction(product))}
+                >
                     x
                 </RemoveButton>
             </MiniCartProContent>
         </MiniCartProductItem>
-    );
-};
+    )
+}
 
 MiniCartProduct.propTypes = {
     product: PropTypes.object.isRequired,
-};
+}
 
-
-export default MiniCartProduct;
+export default MiniCartProduct
