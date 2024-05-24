@@ -6,6 +6,7 @@ import { ThemeProvider, theme } from '@styled'
 import { persistor, store } from '@global/store'
 import { GlobalStyle } from '@assets/css/global.style'
 import { PersistGate } from 'redux-persist/integration/react'
+import builder from '@builder.io/react'
 
 // CSS import
 import 'swiper/swiper.scss'
@@ -35,6 +36,9 @@ const themeBootstrap = {
         xl: '1200px',
     },
 }
+
+//init builder io
+builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY)
 
 const FurnsAPP = ({ Component, pageProps }) => {
     return (

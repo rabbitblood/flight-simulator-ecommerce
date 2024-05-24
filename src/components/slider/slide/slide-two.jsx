@@ -9,7 +9,14 @@ import {
     SliderThumb,
 } from '@components/slider/slider.style'
 
-const SlideTwo = ({ subTitle, title, content, thumb }) => {
+const SlideTwo = ({
+    subTitle,
+    title,
+    content,
+    thumb,
+    buttonText,
+    buttonToUrl,
+}) => {
     return (
         <SlideItem>
             {thumb && (
@@ -27,17 +34,19 @@ const SlideTwo = ({ subTitle, title, content, thumb }) => {
                             )}
                             {title && <SlideTitle>{title}</SlideTitle>}
                             {content && <p>{content}</p>}
-                            <Button
-                                tag="a"
-                                href="/shop"
-                                color="white"
-                                bg="primary"
-                                hvrBg="white"
-                                hvrColor="gray"
-                                className="mt-4 mt-md-5"
-                            >
-                                Shop Now
-                            </Button>
+                            {buttonText && (
+                                <Button
+                                    tag="a"
+                                    href={buttonToUrl ?? '/'}
+                                    color="white"
+                                    bg="primary"
+                                    hvrBg="white"
+                                    hvrColor="gray"
+                                    className="mt-4 mt-md-5"
+                                >
+                                    {buttonText}
+                                </Button>
+                            )}
                         </SlideContent>
                     </Col>
                 </Row>
