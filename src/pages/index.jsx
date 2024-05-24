@@ -20,7 +20,6 @@ const HomeTwo = ({ blogs, products, collections }) => {
             .get('home-page-banner')
             .promise()
             .then(({ data }) => {
-                console.log(data)
                 setSliderData(
                     data.bannerSlides.map((slide) => {
                         return {
