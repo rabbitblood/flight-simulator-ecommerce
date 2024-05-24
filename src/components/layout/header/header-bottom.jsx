@@ -42,7 +42,7 @@ const HeaderBottom = ({
                         </HeaderActionBtn>
                     </Col>
 
-                    <Col xs={5} lg={3} className="text-center text-lg-left">
+                    <Col xs={6} lg={3} className="text-center text-lg-left">
                         <Logo
                             className="logo--desktop"
                             src="/images/logo/logo-white.png"
@@ -56,7 +56,7 @@ const HeaderBottom = ({
                         />
                     </Col>
 
-                    <Col xs={4} lg={3} className="d-lg-none text-right">
+                    <Col xs={3} lg={3} className="d-lg-none text-right">
                         <HeaderAction>
                             <ActionItem>
                                 <HeaderActionBtn
