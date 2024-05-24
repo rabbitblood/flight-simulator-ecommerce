@@ -10,7 +10,7 @@ export const PromoTitle = styled.h3`
     overflow: hidden;
 
     ${devices.xs} {
-        font-size: 26px;
+        font-size: 15px;
         line-height: 26px;
     }
 `
