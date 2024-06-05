@@ -14,6 +14,7 @@ import { useEffect, useState } from 'react'
 
 const HomeTwo = ({ blogs, products, collections }) => {
     const [sliderData, setSliderData] = useState([])
+    const [promoData, setPromoData] = useState([])
 
     useEffect(() => {
         builder
@@ -29,6 +30,22 @@ const HomeTwo = ({ blogs, products, collections }) => {
                             thumb: slide.bannerSlide.image,
                             buttonText: slide.bannerSlide.buttonText,
                             buttonToUrl: slide.bannerSlide.buttonToUrl,
+                        }
+                    })
+                )
+            })
+
+        builder
+            .get('all-featured-product')
+            .promise()
+            .then(({ data }) => {
+                setPromoData(
+                    data.products.map((product) => {
+                        return {
+                            slug: 'product/' + product.product.productUrlHandle,
+                            align: 'left',
+                            thumb: product.product.image,
+                            title: product.product.text,
                         }
                     })
                 )
@@ -61,7 +78,11 @@ const HomeTwo = ({ blogs, products, collections }) => {
                 className="featured-products"
             />
 
-            <Promotions fluid={true} products={products} />
+            <Promotions
+                fluid={true}
+                products={products}
+                promoData={promoData}
+            />
 
             {/* <LatestBlog posts={blogs} pt={[60, 60, 100]}/> */}
         </Layout>
